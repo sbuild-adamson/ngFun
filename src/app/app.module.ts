@@ -7,13 +7,13 @@ import {
   EventThumbnailComponent, 
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponenet,
   UpvoteComponent,
   VoterService,
   LocationValidator,
+  EventResolver,
 } from './events';
 import { appRoutes } from './routes';
 import { NavBarComponent } from './nav/navbar.component';
@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http'
 import { 
   DurationPipe, 
   EventService 
@@ -44,6 +45,7 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -65,7 +67,7 @@ let jQuery = window['$'];
   ],
   providers: [
     EventService,
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
